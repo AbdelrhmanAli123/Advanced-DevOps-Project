@@ -19,7 +19,7 @@ variable "rds_info" {
     subnet-group-name         = string
     backup_retention_period   = number
     skip_final_snapshot       = bool
-    final_snapshot_identifier = string
+    # final_snapshot_identifier = string
     tag                       = string
   })
 }

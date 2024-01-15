@@ -74,7 +74,28 @@ variable "rds_info" {
     subnet-group-name         = string
     backup_retention_period   = number
     skip_final_snapshot       = bool
-    final_snapshot_identifier = string
+    # final_snapshot_identifier = string
     tag                       = string
   })
+}
+
+
+
+variable "namespaces" {
+  type = list(string)
+}
+
+
+variable "ALB_info" {
+  
+  type = object({
+
+    cluster_name            = string
+    policy_name             = string
+    iam_role_name           = string
+    namespace               = string
+    sa_name                 = string
+    region                  = string    
+  })
+  
 }

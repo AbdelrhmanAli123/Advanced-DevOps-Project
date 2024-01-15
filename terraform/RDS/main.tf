@@ -9,7 +9,7 @@ resource "aws_db_instance" "my_rds" {
   password                  = var.rds_info.password
   backup_retention_period   = var.rds_info.backup_retention_period
   skip_final_snapshot       = var.rds_info.skip_final_snapshot
-  final_snapshot_identifier = var.rds_info.final_snapshot_identifier
+  # final_snapshot_identifier = var.rds_info.final_snapshot_identifier
 
   vpc_security_group_ids    = [ var.sg_id ]
   db_subnet_group_name      = aws_db_subnet_group.subnet-group.name

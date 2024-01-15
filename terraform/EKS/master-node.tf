@@ -18,3 +18,8 @@ resource "aws_eks_cluster" "my_eks" {
   ]
 }
 
+data "aws_eks_cluster_auth" "cluster_token" {
+  name = aws_eks_cluster.my_eks.name
+}
+
+

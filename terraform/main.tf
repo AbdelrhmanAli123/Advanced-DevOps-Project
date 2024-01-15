@@ -1,16 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~>5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "us-east-2"
-}
-
 module "Network" {
   source           = "/home/ballo/terra/terraform/network"
   vpc_cidr         = var.vpc_cidr
@@ -44,4 +31,13 @@ module "RDS" {
   RDS_subnets_id   = module.Network.RDS_subnets_id
   sg_id            = module.SG.sg_id
   rds_info         = var.rds_info
+}
+
+module "K8S-oprators" {
+  source          = "/home/ballo/terra/terraform/K8S-oprator"
+  namespaces      = var.namespaces
+  ALB_info        = var.ALB_info
+  oidc_issuer_url = module.EKS.oidc_issuer_url
+  vpc_id          = module.Network.vpc_id
+  
 }
