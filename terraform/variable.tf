@@ -23,7 +23,7 @@ variable "RDS_subnets_cidr" {
 }
 
 variable "az" {
-  type = list
+  type = list(any)
 }
 
 variable "sg-values" {
@@ -39,15 +39,15 @@ variable "sg-values" {
 
 
 variable "nodes_configs" {
-    type = object({
-      desired_size    = number
-      max_size        = number
-      min_size        = number
-      node_group_name = string
-      ec2_ssh_key     = string
-      
-    })
-  
+  type = object({
+    desired_size    = number
+    max_size        = number
+    min_size        = number
+    node_group_name = string
+    ec2_ssh_key     = string
+
+  })
+
 }
 
 
@@ -64,18 +64,18 @@ variable "ecr_info" {
 
 variable "rds_info" {
   type = object({
-    allocated_storage         = number
-    db_name                   = string
-    engine                    = string
-    engine_version            = string
-    instance_class            = string
-    username                  = string
-    password                  = string
-    subnet-group-name         = string
-    backup_retention_period   = number
-    skip_final_snapshot       = bool
+    allocated_storage       = number
+    db_name                 = string
+    engine                  = string
+    engine_version          = string
+    instance_class          = string
+    username                = string
+    password                = string
+    subnet-group-name       = string
+    backup_retention_period = number
+    skip_final_snapshot     = bool
     # final_snapshot_identifier = string
-    tag                       = string
+    tag = string
   })
 }
 
@@ -87,15 +87,15 @@ variable "namespaces" {
 
 
 variable "ALB_info" {
-  
+
   type = object({
 
-    cluster_name            = string
-    policy_name             = string
-    iam_role_name           = string
-    namespace               = string
-    sa_name                 = string
-    region                  = string    
+    cluster_name  = string
+    policy_name   = string
+    iam_role_name = string
+    namespace     = string
+    sa_name       = string
+    region        = string
   })
-  
+
 }

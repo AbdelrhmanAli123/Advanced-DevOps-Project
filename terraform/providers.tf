@@ -1,5 +1,6 @@
 # Specify the required providers
 terraform {
+  
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -13,11 +14,15 @@ terraform {
       source  = "hashicorp/helm"
       version = "~> 2.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = "3.6.0"
+    }
   }
 }
 
 provider "aws" {
-  region = "us-east-2" 
+  region = "us-east-2"
 }
 
 # Configure the Kubernetes provider for EKS
