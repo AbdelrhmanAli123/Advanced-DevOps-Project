@@ -21,7 +21,7 @@ spec:
         - containerPort: {{.Values.deployment.containerPort}}
         resources:
           requests:
-            memory: "{{.Values.deployment.minMemory}}
+            memory: {{.Values.deployment.minMemory}}
             cpu: {{.Values.deployment.minCPU}}
           limits:
             memory: {{.Values.deployment.maxMemory}}
