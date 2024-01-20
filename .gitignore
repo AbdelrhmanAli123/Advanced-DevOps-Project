@@ -1,6 +1,6 @@
 
 *.tfstate
 *.tfstate.*
-*.tfvars
-terraform.*
+terraform.tfstate*
 .terraform/
+node_modules
