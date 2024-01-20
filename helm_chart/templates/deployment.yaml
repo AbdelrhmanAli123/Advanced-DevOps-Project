@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devops-task
+  name: {{.Values.deployment.name}}
   labels:
-    app: devops-task
+    app: {{.Values.deployment.labels}}
 spec:
-  replicas: 3
+  replicas: {{.Values.deployment.replicas}}
   selector:
     matchLabels:
-      app: devops-task
+      app: {{.Values.deployment.labels}}
   template:
     metadata:
       labels:
-        app: devops-task
+        app: {{.Values.deployment.labels}}
     spec:
       containers:
-      - name: devops-task
-        image: abdelrhmandevops/devops-task:1
+      - name: {{.Values.deployment.containerName}}
+        image: {{.Values.deployment.containerImage}}
         ports:
-        - containerPort: 4444
+        - containerPort: {{.Values.deployment.containerPort}}
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "{{.Values.deployment.minMemory}}
+            cpu: {{.Values.deployment.minCPU}}
           limits:
-            memory: "256Mi"
-            cpu: "256m"
+            memory: {{.Values.deployment.maxMemory}}
+            cpu: {{.Values.deployment.maxCPU}}
         env:
         - name: RDS_ENDPOINT
           valueFrom:
