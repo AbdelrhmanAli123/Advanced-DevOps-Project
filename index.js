@@ -16,8 +16,8 @@ DB()
 
 app.use(express.json())
 app.use("/",router)
-const port = process.env.PORT || 4444
+const port = process.env.PORT || 4445
 
-app.listen((err)=>{
+app.listen(port,(err)=>{
     console.log(` Aplication is running on the poert ${port} `)
 })

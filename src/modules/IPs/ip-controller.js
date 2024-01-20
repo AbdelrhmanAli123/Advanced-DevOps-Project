@@ -19,7 +19,7 @@ export const catchUserIP = (req,res)=>{
 
 
 export const listUsersIPs = (req,res)=>{
-    con.query(`SELECT * FROM main.users`, (err,result) => {
+    connection.query(`SELECT * FROM main.users`, (err,result) => {
         if (err){
             console.error('Error inserting record:', err);
             return res.status(500).send('Internal Server Error');

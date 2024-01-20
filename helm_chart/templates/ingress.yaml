@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: kubeissuer
+spec:
+  rules:
+  - host: www.ingress.balloapi.online
+    http: 
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: test
+            port:
+              number: 80
+  tls:
+  - hosts:
+      - www.ingress.balloapi.online
+    secretName: letsencrypt-prod

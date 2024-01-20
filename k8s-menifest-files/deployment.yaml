@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-task
+  labels:
+    app: devops-task
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: devops-task
+  template:
+    metadata:
+      labels:
+        app: devops-task
+    spec:
+      containers:
+      - name: devops-task
+        image: abdelrhmandevops/devops-task:1
+        ports:
+        - containerPort: 4444
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "256m"
+        env:
+        - name: RDS_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              name: mysecrets
+              key: RDS_ENDPOINT
+
+        - name: RDS_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysecrets
+              key: RDS_USER
+
+        - name: RDS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysecrets
+              key: RDS_PASSWORD
+
+        envFrom:
+        - configMapRef:
+           name: myconfigs
