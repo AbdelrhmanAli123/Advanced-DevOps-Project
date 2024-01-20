@@ -1,15 +1,22 @@
-import express from "express";
-import { connection } from "./src/db-connection/rds.js"
+import express, { request, response } from "express";
+import { DB } from "./src/db-connection/rds.js"
 import mysql from "mysql"
+import { router } from "./src/modules/IPs/ip-routes.js";
 
 const app = express()
  
-// connection()
+app.get("/hello",(request,response)=>{
+    response.status(200).json({
+        message: "hello world"
+    })
+})
 
+// connection()
+DB()
 
 app.use(express.json())
-
-const port = process.env.PORT || 4000
+app.use("/",router)
+const port = process.env.PORT || 4444
 
 app.listen((err)=>{
     console.log(` Aplication is running on the poert ${port} `)

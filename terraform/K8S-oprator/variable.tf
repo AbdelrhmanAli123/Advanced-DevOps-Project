@@ -46,7 +46,3 @@ variable "vpc_id" {
   
 # }
 
-# variable "oidc_issuer_url" {
-#   type = string
-  
-# }

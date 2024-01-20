@@ -7,7 +7,6 @@ resource "random_password" "password" {
 
 resource "aws_kms_key" "kms" {
   description = "KMS key for RDS"
-  deletion_window_in_days = 7
   is_enabled = true
   enable_key_rotation = true
 
@@ -19,8 +18,6 @@ resource "aws_kms_key" "kms" {
 resource "aws_secretsmanager_secret" "secret-manager" {
   name = "my-secret-manager"
   kms_key_id = aws_kms_key.kms.id
-  recovery_window_in_days = 14
-
   tags = {
     Name = "terraform secret manager"
   }

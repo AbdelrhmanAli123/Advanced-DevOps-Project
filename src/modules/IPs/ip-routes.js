@@ -2,7 +2,7 @@ import { Router } from "express";
 import * as ip from './ip-controller.js'
 
 
-const router = Router()
+export const router = Router()
 
 
 router.get("/client-ip", ip.catchUserIP)

@@ -1,4 +1,4 @@
-import { connection } from "../../db-connection/rds";
+import { connection } from "../../db-connection/rds.js";
 
 export const catchUserIP = (req,res)=>{
     const userIP = req.ip.replace(/^::ffff:/, '')
