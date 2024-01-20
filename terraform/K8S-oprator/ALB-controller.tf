@@ -1,5 +1,10 @@
 
-# // get account info
+// i decided to use ingress instead of ALB so this but i let this file as referance
+
+
+
+
+// get account info
 # data "aws_caller_identity" "aws_account_info" {}
 
 

@@ -3,6 +3,9 @@ variable "namespaces" {
 }
 
 
+variable "vpc_id" {
+  type = string
+}
 
 # variable "Cert-manager" {
 #   type = object({
@@ -29,25 +32,21 @@ variable "namespaces" {
 #   })
 # }
 
-variable "ALB_info" {
+# variable "ALB_info" {
   
-  type = object({
+#   type = object({
 
-    cluster_name            = string
-    policy_name             = string
-    iam_role_name           = string
-    namespace               = string
-    sa_name                 = string
-    region                  = string    
-  })
+#     cluster_name            = string
+#     policy_name             = string
+#     iam_role_name           = string
+#     namespace               = string
+#     sa_name                 = string
+#     region                  = string    
+#   })
   
-}
+# }
 
-variable "oidc_issuer_url" {
-  type = string
+# variable "oidc_issuer_url" {
+#   type = string
   
-}
-
-variable "vpc_id" {
-  type = string
-}
+# }

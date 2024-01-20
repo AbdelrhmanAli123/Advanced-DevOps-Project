@@ -1,0 +1,45 @@
+pipeline{
+    agent any
+    stages{
+        stage('validate terraform syntax'){
+            steps{
+                script{
+                    sh 'terraform validate'
+                }
+            }
+        }
+        stage('terraform formate'){
+            steps{
+                script{
+                    sh 'terraform fmt'
+                }
+            }
+        }
+        stage('terraform plan'){
+            steps{
+                script{
+                    sh 'terraform plan'
+                }
+            }
+        }
+        stage('terraform apply or destroy'){
+            steps{
+                script{
+                    if (params.action == "apply"){
+                        sh '''
+                        echo "building the infra now"
+                        terraform apply --auto-approve
+                        '''
+                    } else if (params.action == "destroy"){
+                        sh '''
+                            echo "destroying the infra now"
+                            terraform destroy --auto-approve
+                            '''
+                    } else {
+                        sh ' echo "insert correct paramter please" '
+                    }
+                }
+            }
+        }
+    }
+}

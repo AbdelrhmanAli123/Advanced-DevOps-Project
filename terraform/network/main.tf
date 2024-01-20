@@ -15,8 +15,6 @@ resource "aws_subnet" "eks_subnets" {
   cidr_block = each.value
   map_public_ip_on_launch = true  # Enable auto-assign public IP, you probably get an error if it's not true
   availability_zone = var.az[index(keys(var.EKS_subnets_cidr), each.key) % length(var.az)]
-
-
   tags = {
     Name = each.key
   }
