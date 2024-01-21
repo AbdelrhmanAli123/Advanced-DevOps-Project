@@ -1,14 +1,14 @@
   deployment:
     name: devops-task
-    replicas: 3
+    replicas: 2
     labels: devops-task
     image: abdelrhmandevops/balloo
     containerName: devops-task
     containerPort: 4444
-    minMemory: "100Mi"
-    maxMemory: "256Mi"
-    minCPU: "100Mi"
-    maxCPU: "256Mi"
+    minMemory: "10Mi"
+    maxMemory: "100Mi"
+    minCPU: "10Mi"
+    maxCPU: "100Mi"
 
   configmap:
     name: myconfigs
