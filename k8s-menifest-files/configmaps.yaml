@@ -4,5 +4,4 @@ data:
   RDS_PORT: "3306"
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: myconfigs

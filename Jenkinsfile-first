@@ -4,10 +4,10 @@ pipeline{
     environment {
         aws_access_key_id     = credentials('aws_access_key_id')
         aws_secret_access_key = credentials('aws_secret_access_key')
-        image_name            = "devops-task:${BUILD_NUMBER}"
+        image_name            = "devops-task"
         region                = "us-east-2"
         ecr_repo_name         = "my-ecr"
-        ecr_url               = ""
+        ecr_url               = "585661499406.dkr.ecr.us-east-2.amazonaws.com"
         image_version         = "${ecr_url}/${ecr_repo_name}:${BUILD_NUMBER}"
     }
     stages{
