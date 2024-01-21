@@ -28,13 +28,13 @@ pipeline{
         stage('push image to ECR'){
             steps{
                 script{
-                        sh 'aws ecr-public get-login-password --region ${region} | docker login --username AWS --password-stdin ${ecr_url}'
+                        sh 'aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${ecr_url}'
                         sh 'docker tag ${image_name} ${ecr_url}/${ecr_repo_name}:${BUILD_NUMBER}'
                         sh 'docker push ${ecr_url}/${ecr_repo_name}:${BUILD_NUMBER}'
                 }
             }
         }
-        stage('terraform apply or destroy'){
+        stage('Trigger Downstream Job'){
             steps{
                 build(job: 'cd-pipeline', parameters: [
                     string(name: 'IMAGE_VERSION', value: "${image_version}")
