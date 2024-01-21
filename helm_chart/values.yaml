@@ -2,7 +2,7 @@
     name: devops-task
     replicas: 3
     labels: devops-task
-    image: 585661499406.dkr.ecr.us-east-2.amazonaws.com/my-ecr:10
+    image: abdelrhmandevops/balloo
     containerName: devops-task
     containerPort: 4444
     minMemory: "100Mi"
