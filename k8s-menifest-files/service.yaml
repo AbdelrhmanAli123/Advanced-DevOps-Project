@@ -4,8 +4,8 @@ metadata:
   name: my-service
 spec:
   selector:
-    app.kubernetes.io/name: MyApp
+      app: devops-task
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 9376
+      targetPort: 4444

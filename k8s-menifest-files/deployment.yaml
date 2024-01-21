@@ -5,7 +5,7 @@ metadata:
   labels:
     app: devops-task
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: devops-task
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: devops-task
-        image: abdelrhmandevops/devops-task:1
+        image: abdelrhmandevops/balloo
         ports:
         - containerPort: 4444
         resources:

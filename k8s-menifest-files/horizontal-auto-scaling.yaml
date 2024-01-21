@@ -1,7 +1,6 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  creationTimestamp: null
   name: devops-task
 spec:
   maxReplicas: 5

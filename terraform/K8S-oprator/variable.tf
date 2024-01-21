@@ -33,9 +33,7 @@ variable "vpc_id" {
 # }
 
 # variable "ALB_info" {
-  
 #   type = object({
-
 #     cluster_name            = string
 #     policy_name             = string
 #     iam_role_name           = string

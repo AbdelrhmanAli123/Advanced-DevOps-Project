@@ -1,19 +1,19 @@
   deployment:
     name: devops-task
-    replicas: 2
+    replicas: 3
     labels: devops-task
-    image: abdelrhmandevops/balloo
+    image: 585661499406.dkr.ecr.us-east-2.amazonaws.com
     containerName: devops-task
     containerPort: 4444
-    minMemory: "10Mi"
-    maxMemory: "100Mi"
-    minCPU: "10Mi"
-    maxCPU: "100Mi"
+    minMemory: "100Mi"
+    maxMemory: "256Mi"
+    minCPU: "100Mi"
+    maxCPU: "256Mi"
 
   configmap:
     name: myconfigs
-    port: "4444"
-    rds_port: "3306"
+    port: 4444
+    rds_port: 3306
 
 
   service:
