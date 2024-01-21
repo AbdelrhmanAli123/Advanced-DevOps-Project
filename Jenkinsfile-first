@@ -4,7 +4,6 @@ pipeline{
     environment {
         AWS_ACCESS_KEY_ID     = credentials('aws_access_key_id')
         AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
-        region                = "us-east-2"
         image_name            = "devops-task"
         region                = "us-east-2"
         ecr_repo_name         = "my-ecr"
