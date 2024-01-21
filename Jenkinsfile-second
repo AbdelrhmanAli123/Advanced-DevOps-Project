@@ -15,7 +15,8 @@ pipeline{
         stage('uppdate the image version in deployment'){
             steps{
                 script{
-                        sh 'sed -i 's/585661499406\.dkr\.ecr.*/${IMAGE_NAME}/g'  helm_chart/values.yaml
+                        sh "sed -i 's/containerImage: .*/containerImage: ${IMAGE_NAME}/' helm_chart/values.yaml"
+
                         sh 'cat helm_chart/values.yaml'
                 }
             }

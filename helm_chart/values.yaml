@@ -1,40 +1,40 @@
-deployment:
-  name: devops-task
-  replicas: 3
-  labels: devops-task
-  containerName: devops-task
-  containerImage: 585661499406.dkr.ecr.us-east-2.amazonaws.com
-  containerPort: 4444
-  minMemory: "100Mi"
-  maxMemory: "256Mi"
-  minCPU: "100Mi"
-  maxCPU: "256Mi"
+  deployment:
+    name: devops-task
+    replicas: 3
+    labels: devops-task
+    containerName: devops-task
+    containerImage: 585661499406.dkr.ecr.us-east-2.amazonaws.com
+    containerPort: 4444
+    minMemory: "100Mi"
+    maxMemory: "256Mi"
+    minCPU: "100Mi"
+    maxCPU: "256Mi"
 
-configmap:
-  name: myconfigs
-  port: "4444"
-  rds_port: "3306"
-
-
-service:
-  name: my-service
-  protocol: TCP
-  port: 80
-  targetPort: 4444
+  configmap:
+    name: myconfigs
+    port: "4444"
+    rds_port: "3306"
 
 
-secret:
-  name: my-secrets
-
-ingress: 
-  name: my-ingrss
-  namespace: defualt
-  host: www.ingress.balloapi.online
+  service:
+    name: my-service
+    protocol: TCP
+    port: 80
+    targetPort: 4444
 
 
-HPA:
-  name: horizontal-auto-scaling
-  maxReplicas: 5
-  minReplicas: 2
-  kind: Deployment
-  cpu: 50
+  secret:
+    name: my-secrets
+
+  ingress: 
+    name: my-ingrss
+    namespace: defualt
+    host: www.ingress.balloapi.online
+
+
+  HPA:
+    name: horizontal-auto-scaling
+    maxReplicas: 5
+    minReplicas: 2
+    kind: Deployment
+    cpu: 50
