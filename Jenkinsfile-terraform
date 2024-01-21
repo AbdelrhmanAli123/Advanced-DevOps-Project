@@ -1,31 +1,52 @@
 pipeline{
     agent any
+
+    environment {
+        aws_access_key_id     = credentials('aws_access_key_id')
+        aws_secret_access_key = credentials('aws_secret_access_key')
+    }
     stages{
+
+
+        stage('checkout the repo'){
+            steps{
+                git branch: 'main', credentialsId: 'github_cred', url: 'https://github.com/AbdelrhmanAli123/advanced-devops-task.git'
+            }
+        }
         stage('validate terraform syntax'){
             steps{
                 script{
-                    sh 'terraform validate'
+                        dir("terraform"){
+                            sh 'terraform validate'
+                        }
                 }
             }
         }
         stage('terraform formate'){
             steps{
                 script{
-                    sh 'terraform fmt'
+                        dir("terraform"){
+                            sh 'terraform fmt'
+                        }
                 }
             }
         }
         stage('terraform plan'){
             steps{
                 script{
-                    sh 'terraform plan'
+                        dir("terraform"){
+                            sh 'terraform plan'
+                        }
                 }
             }
         }
         stage('terraform apply or destroy'){
             steps{
                 script{
+                        dir("terraform"){
+                            
                     if (params.action == "apply"){
+
                         sh '''
                         echo "building the infra now"
                         terraform apply --auto-approve
@@ -38,7 +59,8 @@ pipeline{
                     } else {
                         sh ' echo "insert correct paramter please" '
                     }
-                }
+                  }
+               }
             }
         }
     }
