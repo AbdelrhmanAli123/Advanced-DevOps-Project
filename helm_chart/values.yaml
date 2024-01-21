@@ -2,8 +2,8 @@
     name: devops-task
     replicas: 3
     labels: devops-task
+    image: 585661499406.dkr.ecr.us-east-2.amazonaws.com
     containerName: devops-task
-    containerImage: 585661499406.dkr.ecr.us-east-2.amazonaws.com
     containerPort: 4444
     minMemory: "100Mi"
     maxMemory: "256Mi"
