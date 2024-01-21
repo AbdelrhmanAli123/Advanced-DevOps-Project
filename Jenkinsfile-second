@@ -1,0 +1,39 @@
+pipeline{
+    agent any
+
+    environment {
+        IMAGE_NAME="${params.IMAGE_VERSION}"
+    }
+    stages{
+
+
+        stage('checkout the repo'){
+            steps{
+                git branch: 'main', credentialsId: 'github_cred', url: 'https://github.com/AbdelrhmanAli123/advanced-devops-task.git'
+            }
+        }
+        stage('uppdate the image version in deployment'){
+            steps{
+                script{
+                        sh 'sed -i 's/public\.ecr\.rep.*/${IMAGE_NAME}/g'  helm_chart/values.yaml
+                        sh 'cat helm_chart/values.yaml'
+                }
+            }
+        }
+        stage('push the updated deployment file to github repo'){
+            steps{
+                script{
+                    withCredentials([gitUsernamePassword(credentialsId: 'github_cred', gitToolName: 'Default')]) {
+                      sh """
+                         git config --global user.name Abdelrhman
+                         git config --global user.email balloabdelrhman@gmail.com
+                         git add .
+                         git commit -am "update the helm chart values file"
+                         git push https://github.com/AbdelrhmanAli123/advanced-devops-task.git main
+                        """
+                     }
+                }
+            }
+        }
+    }
+}

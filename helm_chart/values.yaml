@@ -3,7 +3,7 @@ deployment:
   replicas: 3
   labels: devops-task
   containerName: devops-task
-  containerImage: abdelrhmandevops/devops-task:1
+  containerImage: public.ecr.repo
   containerPort: 4444
   minMemory: "100Mi"
   maxMemory: "256Mi"

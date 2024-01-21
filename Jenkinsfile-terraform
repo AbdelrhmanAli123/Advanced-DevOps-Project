@@ -13,54 +13,63 @@ pipeline{
                 git branch: 'main', credentialsId: 'github_cred', url: 'https://github.com/AbdelrhmanAli123/advanced-devops-task.git'
             }
         }
+        stage('initialize terraform '){
+            steps{
+                script{
+                    dir("terraform"){
+                        sh 'terraform init'
+                    }
+                }
+            }
+        }
         stage('validate terraform syntax'){
             steps{
                 script{
-                        dir("terraform"){
-                            sh 'terraform validate'
-                        }
+                    dir("terraform"){
+                        sh 'terraform validate'
+                    }
                 }
             }
         }
         stage('terraform formate'){
             steps{
                 script{
-                        dir("terraform"){
-                            sh 'terraform fmt'
-                        }
+                    dir("terraform"){
+                        sh 'terraform fmt'
+                    }
                 }
             }
         }
         stage('terraform plan'){
             steps{
                 script{
-                        dir("terraform"){
-                            sh 'terraform plan'
-                        }
+                    dir("terraform"){
+                        sh 'terraform plan'
+                    }
                 }
             }
         }
         stage('terraform apply or destroy'){
             steps{
                 script{
-                        dir("terraform"){
-                            
-                    if (params.action == "apply"){
+                    dir("terraform"){
+                        
+                        if (params.action == "apply"){
 
-                        sh '''
-                        echo "building the infra now"
-                        terraform apply --auto-approve
-                        '''
-                    } else if (params.action == "destroy"){
-                        sh '''
-                            echo "destroying the infra now"
-                            terraform destroy --auto-approve
+                            sh '''
+                            echo "building the infra now"
+                            terraform apply --auto-approve
                             '''
-                    } else {
-                        sh ' echo "insert correct paramter please" '
+                        } else if (params.action == "destroy"){
+                            sh '''
+                                echo "destroying the infra now"
+                                terraform destroy --auto-approve
+                                '''
+                        } else {
+                            sh ' echo "insert correct paramter please" '
+                        }
                     }
-                  }
-               }
+                }
             }
         }
     }
