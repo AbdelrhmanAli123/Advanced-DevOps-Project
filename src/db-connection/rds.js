@@ -1,11 +1,11 @@
 import mysql from "mysql"
 
 export const connection = mysql.createConnection({
-    host: process.env.RDS_ENDPOINT || "terraform-20240121144931267700000005.cxe4wge6g62v.us-east-2.rds.amazonaws.com",
-    user: process.env.RDS_USER || "ballo",
-    port: process.env.RDS_PORT || 3306,
-    password: process.env.RDS_PASSWORD || "123asd123asd",
-    connectTimeout: 10000
+    host: process.env.RDS_ENDPOINT,
+    user: process.env.RDS_USER,
+    port: process.env.RDS_PORT,
+    password: process.env.RDS_PASSWORD,
+    connectTimeout: 1000
 })
 
 export const DB = ()=>{
