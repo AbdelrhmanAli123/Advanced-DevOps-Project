@@ -17,7 +17,6 @@ Welcome to my DevOps project repository! this project automates AWS service prov
 - K8S (AWS EKS)
 - RDS
 - route53
-- secret manager
 - Jenkins
 - Argocd
 - Helm chart
@@ -38,7 +37,6 @@ Welcome to my DevOps project repository! this project automates AWS service prov
 - EKS            --> a platform to deploy our application on
 - ECR            --> a private repo to store, push and pull the docker images
 - RDS            --> the Database which we use it with nodejs APP to store and display the IPs stored in
-- secret manager --> used to store RDS credentials
 - route53        --> create a new CNAME recored to point on the ingress url to pass the let's encrypt challenge
 - nginx ingress  --> just an ingress controller !
 - cert-manager   --> k8s opratort to issue trusted TLS certificate
