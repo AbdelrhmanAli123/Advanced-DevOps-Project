@@ -5,7 +5,7 @@ metadata:
     k8s-addon: cluster-autoscaler.addons.k8s.io
     k8s-app: cluster-autoscaler
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::585661499406:role/my-eks-cluster-autoscaler
+    eks.amazonaws.com/role-arn: arn:aws:iam::585661499406:role/my-eks-cluster-autoscaler  # you should change it
   name: cluster-autoscaler
   namespace: kube-system
   
@@ -148,7 +148,7 @@ spec:
           type: RuntimeDefault
       serviceAccountName: cluster-autoscaler
       containers:
-        - image: registry.k8s.io/autoscaling/cluster-autoscaler:v1.28.0
+        - image: registry.k8s.io/autoscaling/cluster-autoscaler:<cluster_version>
           name: cluster-autoscaler
           resources:
             limits:
@@ -164,7 +164,7 @@ spec:
             - --cloud-provider=aws
             - --skip-nodes-with-local-storage=false
             - --expander=least-waste
-            - --node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/my-eks-cluster
+            - --node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/<you_cluster_name>
           volumeMounts:
             - name: ssl-certs
               mountPath: /etc/ssl/certs/ca-certificates.crt # /etc/ssl/certs/ca-bundle.crt for Amazon Linux Worker Nodes

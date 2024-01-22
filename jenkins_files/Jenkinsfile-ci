@@ -7,7 +7,7 @@ pipeline{
         image_name            = "devops-task"
         region                = "us-east-2"
         ecr_repo_name         = "my-ecr"
-        ecr_url               = "585661499406.dkr.ecr.us-east-2.amazonaws.com"
+        ecr_url               = "<your_aws_acc_id>.dkr.ecr.<aws_region>.amazonaws.com"
         image_version         = "${ecr_url}/${ecr_repo_name}:${BUILD_NUMBER}"
     }
     stages{
