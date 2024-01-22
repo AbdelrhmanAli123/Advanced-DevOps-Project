@@ -8,11 +8,12 @@ resource "aws_security_group" "my-eks-sg" {
   }
 }
 
+//I am allowing all the inbound traffic for all ports, just for sake of simplicity
 resource "aws_vpc_security_group_ingress_rule" "allow_all_inbound_ipv4" {
   security_group_id = aws_security_group.my-eks-sg.id
   cidr_ipv4         = var.sg-values.cidr_ipv4
   from_port         = 0
-  to_port           = 0
+  to_port           = 65500
   ip_protocol       = "tcp"
 }
 
