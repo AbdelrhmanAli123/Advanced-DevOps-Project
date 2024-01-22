@@ -24,7 +24,6 @@ Welcome to my DevOps project repository! this project automates AWS service prov
 - nginx ingress
 
   
-### 1. Provision Infrastructure
 
 #### Prerequisites
 - owned domain name
@@ -42,24 +41,24 @@ Welcome to my DevOps project repository! this project automates AWS service prov
 - cert-manager   --> k8s operators to issue trusted TLS certificate
 - argoCD         --> another operator for implementing the GitOps concept
 - OIDC           --> apply the IRSA concept to grant the service account the permissions that it needs only
-  
+
 ### Steps
-### 1. Create the infrastructure using Terraform
-- start building your infra using terraform --> (EKS, ECR, RDS, secret manager, and route53)
+### 1. Provision Infrastructure using Terraform
+- start building your Infrastructure using terraform --> (EKS, ECR, RDS, and route53)
 - create k8s oprators with terraform --> (ingress, cert-manager and argocd)
 - you can find all the terraform files under `terraform` folder
 - display the required attribute using output block in terraform --> (RDS endpoint, ECR URL)
 ### 2. create your Application
 - start creating your app, in my case, I used nodejs(Express)
 - the application should expose two APIs endpoints
-- The first one "<your-host>.com/client-ip", this saves your ip in the RDS
-- The second one  "<your-host>.com/client-ip/list", this displays the list of IPs stored in the database
+- The first one `<your-host>.com/client-ip`, this saves your ip in the RDS
+- The second one  `<your-host>.com/client-ip/list`, this displays the list of IPs stored in the database
 ### 3. Dockerize the application
 - create a docker file for your application
 - create a docker container manually to make sure that everything works well ---> only  for testing
 ### 4. k8s manifest files
 - create required k8s manifest files for your application
-- note: don't forget to create a secret for your ECR to make your cluster authorize to pull images from ECR registry
+- note: don't forget to create a secret for your ECR to make your cluster authorized to pull images from the ECR registry
 - note: in the cluster autoscaler manifest file, you  should modify the following things:
     - the arn URL of the role for the service account
     - modify the cluster name with your real cluster name
@@ -70,13 +69,13 @@ Welcome to my DevOps project repository! this project automates AWS service prov
 - update the values.yaml with the appropriate values
 ### 6. automate infra using Jenkins
 - now we have to create a parameterized pipeline for automating the infrastructure creation
-- in my case, I used two options as a parameter --> (apply & destroy)
+- in my case, I used two options as a parameters --> (apply & destroy)
 - ![parm-terr](https://github.com/AbdelrhmanAli123/advanced-devops-task/assets/133269614/50021f0b-e792-48ee-861a-16b3a75594bd)
 - Jenkins file existed under `jenkins_files` directory
 - note: don't forget to add your aws credential --> aws access and secret access key
   ![terraform-jenkins](https://github.com/AbdelrhmanAli123/advanced-devops-task/assets/133269614/53bbe809-a02b-4b1a-9eba-e370eea9395e)
 
-### 7. automate build, push and trigeer the CD pipeline
+### 7. Automate build, push, and trigger the CD pipeline
 - now we need to create a CI pipeline
 - CI pipeline will pull the repo
 - dockerize the nodejs app
