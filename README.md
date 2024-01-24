@@ -34,7 +34,7 @@ Welcome to my DevOps project repository! this project automates AWS service and 
 ### explanation
 #### In the following lines I want to discuss each service and operator we are creating with Terraform
 - EKS            --> a platform to deploy our application on
-- ECR            --> a private repo to store, push and pull the docker images
+- ECR            --> a private repo to store, push, and pull the docker images
 - RDS            --> the Database which we use with nodejs APP to store and display the IPs stored in
 - route53        --> Create a new CNAME record to point on the ingress URL to pass the let's encrypt challenge
 - nginx ingress  --> just an ingress controller!
@@ -87,7 +87,7 @@ Welcome to my DevOps project repository! this project automates AWS service and 
 ### 8. CD pipeline
 - now we should create the CD pipeline
 - CD pipeline will clone the repo
-- update the HELM chart values.yaml with the image name that we get as parameter from the CI pipeline
+- update the HELM chart values.yaml with the image name that we get as a parameter from the CI pipeline
 - push the changes to the same repo again
 - - Jenkins file existed under `jenkins_files` directory
   ![CD-PIPE](https://github.com/AbdelrhmanAli123/advanced-devops-task/assets/133269614/a0d252ab-c30c-43b1-9d7a-2d26e7a61887)
@@ -112,7 +112,7 @@ Welcome to my DevOps project repository! this project automates AWS service and 
 #### Now let's try the app
 ![yalla](https://github.com/AbdelrhmanAli123/advanced-devops-task/assets/133269614/e37df0f3-44c9-454d-9bb8-f5d60c69fb94)
 ![yallla2](https://github.com/AbdelrhmanAli123/advanced-devops-task/assets/133269614/529d1616-9148-4c35-9c7f-fb175a5c8ad2)
-#### here you can look at the lock of the certificate
+#### Here you can look at the lock of the certificate
 ![yallla22](https://github.com/AbdelrhmanAli123/advanced-devops-task/assets/133269614/b1687a26-9740-4fa7-8d91-46bf0d2712ee)
 
 
