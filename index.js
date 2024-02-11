@@ -11,7 +11,6 @@ app.get("/hello",(request,response)=>{
     })
 })
 
-// connection()
 DB()
 
 app.use(express.json())
